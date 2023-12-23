@@ -1,0 +1,68 @@
+﻿@model ProductPageVM
+
+
+@{
+
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+
+}
+
+@TempData["Message"]
+
+
+<section class="panel">
+    <header class="panel-heading">
+        Yeni ürün eklemek icin <a asp-action="CreateProduct">tıklayınız</a>
+    </header>
+    <div class="panel-body">
+        <div class="adv-table">
+            <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                <thead>
+                    <tr>
+                        <th>Ürün ID</th>
+                        <th>Ürün Ismi</th>
+                        <th class="hidden-phone">Fiyatı</th>
+                        <th class="hidden-phone">Kategorisi</th>
+                        <th class="hidden-phone">Resim</th>
+                        <th class="hidden-phone">Durumu</th>
+                        <th class="hidden-phone">Guncelle</th>
+                        <th class="hidden-phone">Sil</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (Product item in Model.Products)
+                    {
+
+                        <tr class="gradeX">
+                            <td>@item.ID</td>
+                            <td>   @item.ProductName  </td>
+                            <td class="hidden-phone">@item.UnitPrice</td>
+                            <td class="hidden-phone">@item.Category.CategoryName</td>
+                            <td class="hidden-phone" width="100">
+                                @if (item.ImagePath.Contains("nightlife"))
+                                {
+                                    <img src="/images/TheWarrior.jpg" />
+                                }
+                                else
+                                {
+                                    <img src="@item.ImagePath" alt="" />
+                                }
+                            </td>
+                            <td class="hidden-phone">@item.Status</td>
+                            <td class="center hidden-phone"><a asp-action="UpdateProduct" asp-route-id="@item.ID" class="btn btn-warning"> Güncelle </a>   </td>
+                            <td class="center hidden-phone">  <a asp-action="DeleteProduct" asp-route-id="@item.ID" class="btn btn-danger"> Sil </a>   </td>
+
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>FlatLab - Flat & Responsive Bootstrap Admin Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/OuterTools/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/OuterTools/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="/OuterTools/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="/OuterTools/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/OuterTools/css/owl.carousel.css" type="text/css">
+    <!-- Custom styles for this template -->
+    <link href="/OuterTools/css/style.css" rel="stylesheet">
+    <link href="/OuterTools/css/style-responsive.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <section id="container">
+        <!--header start-->
+        <header class="header white-bg">
+            <div class="sidebar-toggle-box">
+                <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.html" class="logo">Flat<span>lab</span></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="icon-tasks"></i>
+                            <span class="badge bg-success">3</span>
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">You have 3 pending tasks</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">Dashboard v1.3</div>
+                                        <div class="percent">40%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">Database Update</div>
+                                        <div class="percent">60%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">Mobile App</div>
+                                        <div class="percent">0%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                            <span class="sr-only">0% Complete (danger)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- settings end -->
+
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-nav ">
+                <!--search & user info start-->
+                <ul class="nav pull-right top-menu">
+
+                    <!-- user login dropdown start-->
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    <img alt="" src="/OuterTools/img/avatar1_small.jpg">
+                                    <span class="username">@User.Identity.Name</span>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu extended logout">
+                                    <div class="log-arrow-up"></div>
+
+                                    @RenderSection("Sepet", false)
+
+                                    <li><a asp-controller="Home" asp-action="LogOut"><i class="icon-key"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <button class="btn btn-success "><a asp-controller="Home" asp-action="SignIn">Sign-In</a> </button>
+
+                            </li>
+                            <li>
+                                @RenderSection("Sepet", false)
+                            </li>
+                        }
+                    }
+
+                    <!-- user login dropdown end -->
+                </ul>
+                <!--search & user info end-->
+            </div>
+        </header>
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <li>
+                        <a class="active" href="/dashboard/index">
+                            <i class="icon-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="icon-th"></i>
+                            <span>AdminPanel</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="/admin/category/Index">Categories</a></li>
+                            <li><a href="/admin/product/Index">Products</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="active" href="/Shopping/Index">
+                            <i class="icon-shopping-cart"></i>
+                            <span>Shop</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/GoogleMap/Index">
+                            <i class="icon-map-marker"></i>
+                            <span>Google Maps </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Home/SignIn">
+                            <i class="icon-user"></i>
+                            <span>Login Page</span>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                @RenderBody()
+
+            </section>
+        </section>
+        <!--main content end-->
+
+    </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="/OuterTools/js/jquery.js"></script>
+    <script src="/OuterTools/js/jquery-1.8.3.min.js"></script>
+    <script src="/OuterTools/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="/OuterTools/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="/OuterTools/js/jquery.scrollTo.min.js"></script>
+    <script src="/OuterTools/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="/OuterTools/js/jquery.sparkline.js" type="text/javascript"></script>
+    <script src="/OuterTools/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="/OuterTools/js/owl.carousel.js"></script>
+    <script src="/OuterTools/js/jquery.customSelect.min.js"></script>
+    <script src="/OuterTools/js/respond.min.js"></script>
+
+    <script class="include" type="text/javascript" src="/OuterTools/js/jquery.dcjqaccordion.2.7.js"></script>
+
+    <!--common script for all pages-->
+    <script src="/OuterTools/js/common-scripts.js"></script>
+
+    <!--script for this page-->
+    <script src="/OuterTools/js/sparkline-chart.js"></script>
+    <script src="/OuterTools/js/easy-pie-chart.js"></script>
+    <script src="/OuterTools/js/count.js"></script>
+
+    <script>
+
+        //owl carousel
+
+        $(document).ready(function () {
+            $("#owl-demo").owlCarousel({
+                navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true
+
+            });
+        });
+
+        //custom select box
+
+        $(function () {
+            $('select.styled').customSelect();
+        });
+
+    </script>
+
+
+
+</body>
+</html>
