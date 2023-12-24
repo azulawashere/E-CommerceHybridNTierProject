@@ -26,8 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\Categories\PageVMS\" />
-    <Folder Include="Areas\Admin\Models\Categories\RequestModels\" />
     <Folder Include="wwwroot\OuterTools\assets\jquery-file-upload\server\php\files\thumbnail\" />
   </ItemGroup>
 

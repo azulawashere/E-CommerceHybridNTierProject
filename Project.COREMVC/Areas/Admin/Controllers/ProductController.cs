@@ -8,9 +8,10 @@ using Project.ENTITES.Models;
 
 namespace Project.COREMVC.Areas.Admin.Controllers
 {
-    
+
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
+    
     public class ProductController : Controller
     {
         IProductManager _productManager;
@@ -54,10 +55,18 @@ namespace Project.COREMVC.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public IActionResult CreateProduct(Product product, IFormFile formFile)
+        public IActionResult CreateProduct(ProductRequestModel model, IFormFile formFile)
         {
             Guid uniqueName = Guid.NewGuid();
-
+            Product product = new()
+            {
+                CategoryID= model.CategoryID,
+                ProductName= model.ProductName,
+                UnitInStock= model.UnitInStock,
+                UnitPrice = model.UnitPrice,
+                
+            };
+            
             string extension = Path.GetExtension(formFile.FileName);
             product.ImagePath = $"/images/{uniqueName}{extension}";
             string path = $"{Directory.GetCurrentDirectory()}/wwwroot{product.ImagePath}";
@@ -84,6 +93,7 @@ namespace Project.COREMVC.Areas.Admin.Controllers
                     UnitPrice = product.UnitPrice
                 }
             };
+          
             return View(updateProductPageVM);
         }
         [HttpPost]

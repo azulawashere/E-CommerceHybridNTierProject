@@ -6,5 +6,6 @@ namespace Project.COREMVC.Areas.Admin.Models.Products.PageVMS
     {
         public List<Product>   Products { get; set; }
         public List<Category> Categories { get; set; }
+        public ProductRequestModel Model { get; set; }
     }
 }

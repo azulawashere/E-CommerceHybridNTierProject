@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Project.BLL.DTOClasses;
 using Project.BLL.ManagerServices.Abstracts;
-
+using Project.COREMVC.Areas.Admin.Models.Categories.RequestModels;
 using Project.ENTITES.Models;
 
 namespace Project.COREMVC.Areas.Admin.Controllers
@@ -38,10 +38,15 @@ namespace Project.COREMVC.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(Category model)
+        public async Task<IActionResult> CreateCategory(CategoryRequestModel model)
         {
-        
-            await _categoryManager.AddAsync(_mapper.Map<CategoryDTO>(model));
+
+            Category category = new()
+            {
+                Description = model.Description,
+                CategoryName    = model.CategoryName,
+            };
+            await _categoryManager.AddAsync(_mapper.Map<CategoryDTO>(category));
             return RedirectToAction("Index");
         }
 

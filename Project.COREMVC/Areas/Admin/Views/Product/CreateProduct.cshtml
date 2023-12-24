@@ -13,24 +13,24 @@
 <form asp-action="CreateProduct" asp-controller="Product" method="post" class="p-3 w-75 m-auto" enctype="multipart/form-data">
     <div class="mb-3">
         <label>Ürün ismini giriniz</label>
-        <input asp-for="Product.ProductName" class="form-control" />
+        <input asp-for="Model.ProductName" class="form-control" />
     </div>
 
     <div class="mb-3">
         <label>Fiyat giriniz</label>
-        <input asp-for="Product.UnitPrice" class="form-control" />
+        <input asp-for="Model.UnitPrice" class="form-control" />
     </div>
 
     <div class="mb-3">
         <label>Kategori Seciniz</label>
-        <select asp-for="Product.CategoryID" asp-items='new SelectList(Model.Categories,"ID","CategoryName")'>
+        <select asp-for="Model.CategoryID" asp-items='new SelectList(Model.Categories,"ID","CategoryName")'>
         </select>
     </div>
 
 
     <div class="mb-3">
         <label>Dosya seciniz</label>
-        <input type="file" name="formFile" class="form-control" />
+        <input  type="file" name="formFile" class="form-control" />
     </div>
 
     <div class="mb-3">
